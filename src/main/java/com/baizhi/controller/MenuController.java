@@ -24,9 +24,9 @@ public class MenuController {
 
     @RequestMapping("/showAllSecondSort")
     public List<Menu> showAllSecondSort(Integer parentId) {
-        System.out.printf("传过来的父类ID=============" + parentId);
+        // System.out.printf("传过来的父类ID=============" + parentId);
         List<Menu> menuList = menuService.queryAllSecondSort(parentId);
-        System.out.print(menuList);
+        // System.out.print(menuList);
         return menuList;
     }
 }

@@ -23,7 +23,7 @@
         $(function () {
             //点击更换验证码：
             $("#captchaImage").click(function () {//点击更换验证码
-                alert("自己做");
+                changeCode();
             });
 
 
@@ -41,7 +41,8 @@
                             return $("#loginForm").form("validate");
                         },
                         success: function (result) {
-                            if (result == "ok") {
+                            //console.log(result=="\"ok\"");
+                            if (result == "\"ok\"") {
                                 $.messager.show({
                                     title: "登陆提示框",
                                     msg: "恭喜你登陆成功"
@@ -50,7 +51,7 @@
                             } else {
                                 $.messager.show({
                                     title: "登陆提示框",
-                                    msg: "很遗憾登陆失败，请检查您账号密码是否正确"
+                                    msg: "很遗憾登陆失败，请检查您账号密码是否正确,或者验证码是否正确"
                                 })
                                 $("#loginForm").form("clear");
                             }
@@ -66,6 +67,10 @@
                 }
             })
         });
+
+        function changeCode() {
+            $("#captchaImage").prop("src", "${pageContext.request.contextPath}/code/vCode?time=" + new Date());
+        }
     </script>
 </head>
 <body>
@@ -100,9 +105,21 @@
                 <td>&nbsp;</td>
                 <th>验证码:</th>
                 <td>
-                    <input type="text" id="enCode" name="enCode" class="text captcha" maxlength="4" autocomplete="off"/>
-                    <img id="captchaImage" class="captchaImage" src="img/captcha.jpg" title="点击更换验证码"/>
+                    <input type="text" id="enCode" name="vCode" class="text captcha" maxlength="4" autocomplete="off"/>
+                    <img id="captchaImage" class="captchaImage" src="${pageContext.request.contextPath}/code/vCode"
+                         title="点击更换验证码"/>
+
                 </td>
+
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td><a id="code" href="#" onclick="changeCode()">看不清楚？换个图片</a></td>
             </tr>
             <tr>
                 <td>

@@ -105,16 +105,17 @@
 <h1>
     添加轮播图:
 </h1>
-<form id="addBannerForm" method="post">
+<form id="addBannerForm" method="post" enctype="multipart/form-data">
     <input id="addName" name="title"><br>
-
-    <input id="addImgPath" name="imgPath" value="images/shouye/3.jpg"><br>
-
+    <%--    <input id="addImgPath" name="imgPath"><br>--%>
     <input id="addStatus" name="status" value="Y/N"><br>
 
     <input id="addPubDate" name="pubDate"><br>
 
     <input id="addDescription" name="description"><br>
+    <input id="upload" type="file" name="file"/>
+    请选择要上传的图片
+    <%--<input type="submit" value="上传"/>--%>
     <p>
         <a id="submitBtn">提交</a>
         <a id="resetBtn">重置</a>

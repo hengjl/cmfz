@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
+
 @Service
 @Transactional
 public class AdminServiceImpl implements AdminService {
@@ -16,13 +18,17 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public Boolean queryOne(Admin admin) {
-
+    public Boolean queryOne(Admin admin, String vCode, HttpSession session) {
+        String code = (String) session.getAttribute("vCode");
         Admin admin1 = adminMapper.selectOne(admin);
-
-        if (admin1 == null) {
-            return false;
+        if (code.equalsIgnoreCase(vCode)) {
+            System.out.println("ffffffffff");
+            if (admin1 != null) {
+                System.out.println("fffffffffffffffffddddddd");
+                return true;
+            }
         }
-        return true;
+
+        return false;
     }
 }

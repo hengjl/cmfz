@@ -26,8 +26,8 @@
             onClick: function () {
                 $("#addBannerDialog").dialog({
                     title: "添加轮播图",
-                    width: 300,
-                    height: 300,
+                    width: 400,
+                    height: 400,
                     modal: true,
                     resizable: true,
                     href: "${pageContext.request.contextPath}/view/addBanner.jsp"
@@ -39,6 +39,7 @@
             text: "修改",
             onClick: function () {
                 var row = $("#table").edatagrid("getSelected");
+                console.log(row);
                 if (row != null) {
                     //编辑指定行
                     var index = $("#table").edatagrid("getRowIndex", row);
@@ -64,7 +65,6 @@
             text: "删除",
             onClick: function () {
                 $("#table").edatagrid("destroyRow");
-
 
             }
 
@@ -96,9 +96,6 @@
 
     });
 
-    function Opertion(value, row, index) {
-        return "<a class='delete' href='javascript:' onclick='deleteTeam(" + row.id + ")'>删除</a></td>";
-    }
 </script>
 
 <%-- </head>

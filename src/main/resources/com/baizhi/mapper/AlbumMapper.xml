@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.mapper.AlbumMapper">
+    <resultMap id="chapter" type="Album">
+        <id column="aid" property="id"/>
+        <result column="atitle" property="title"></result>
+        <collection property="children" ofType="Chapter">
+            <id column="cid" property="id"/>
+            <result column="ctitle" property="title"/>
+            <result column="url" property="url"/>
+            <result column="size" property="size"/>
+            <result column="duration" property="duration"/>
+            <result column="upload_date" property="uploadDate"/>
+        </collection>
+    </resultMap>
+    <select id="queryAllAlbumChapter" resultMap="chapter">
+        select a.id aid,a.title atitle,c.id cid,c.title ctitle,c.size,c.duration,c.url,c.upload_date
+        from album a left join chapter c on a.id=c.parent_id
+    </select>
+
+
+</mapper>

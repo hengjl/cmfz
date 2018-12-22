@@ -8,14 +8,13 @@
             dataType: "JSON",
             success: function (data) {
                 $.each(data, function (index, first) {
-                    var a = "";
+
                     var id = first.id;
                     $("#aa").accordion("add", {
                         title: first.title,
                         iconCls: first.iconCls,
                         selected: false,
-                        //content: a
-                        content: "<ul id='secondTree" + id + "'></ul>"
+                        content: "<ul id=secondTree" + id + "></ul>"
 
                     })
                     //通过获取对应的id来发异步请求将二级类别查出来

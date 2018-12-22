@@ -17,6 +17,9 @@ import java.util.List;
 public class App extends WebMvcConfigurerAdapter {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
+        /*String str= UUID.randomUUID().toString().replaceAll("-", "").toLowerCase();
+        System.out.println(str);
+        System.out.println(UUID.randomUUID());*/
     }
 
     @Override
