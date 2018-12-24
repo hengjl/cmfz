@@ -27,12 +27,16 @@
 </head>
 <body>
 <%--<audio controls="smallconsole"
-width="30"
+width="22"
        src="${pageContext.request.contextPath}/view/sad.mp3">
 
 </audio>--%>
-<bgsound src="${pageContext.request.contextPath}/view/sad.mp3"/>
-<dynsrc src="${pageContext.request.contextPath}/view/sad.mp3">
+<%--<bgsound src="${pageContext.request.contextPath}/view/sad.mp3"/>
+<dynsrc src="${pageContext.request.contextPath}/view/sad.mp3">--%>
+
+<audio controls="smallconsole" loop="loop"
+       src="${pageContext.request.contextPath}/'+row.url+'">
+</audio>
 
 
 </body>

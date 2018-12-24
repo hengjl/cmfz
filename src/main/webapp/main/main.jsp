@@ -2,11 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>
-        <%--<embed src="F:\sad.mp3" hidden=false autostart=true loop=true volume="55"/>--%>
 
-
-    </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>持名法州主页</title>
     <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
@@ -43,10 +39,6 @@
 
 </head>
 <body class="easyui-layout">
-<%--<bgsound src="F:\sad.mp3" loop="1"></bgsound>--%>
-<audio src="F:\sad.mp3" controls>
-    您的浏览器不支持 audio 标签。
-</audio>
 
 <div data-options="region:'north',split:true" style="height:60px;background-color:  #5C160C">
     <div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px">

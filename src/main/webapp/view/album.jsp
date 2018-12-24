@@ -23,16 +23,15 @@
                     height: 380,
                     modal: true,
                     resizable: true,
-                    href: "${pageContext.request.contextPath}/view/addAlbum.jsp?",
+                    href: "${pageContext.request.contextPath}/view/addAlbum.jsp"
                     //queryParams:{id:id}
                 });
             }
         })
-
         //--------------------------------
         $("#addChapterBtn").linkbutton({
             iconCls: "icon-add",
-            text: "添加章节",
+            text: "添加音频",
             onClick: function () {
                 var row = $("#albumTable").treegrid("getSelected");
                 if (row != null) {
@@ -41,7 +40,7 @@
                         $.messager.alert("提示框", "请先选择专辑")
                     } else {
                         $("#addChapterDialog").dialog({
-                            title: "添加章节",
+                            title: "添加音频",
                             width: 300,
                             height: 300,
                             modal: true,
@@ -52,23 +51,24 @@
                 } else {
                     $.messager.alert("提示框", "请先选择专辑")
                 }
-
-
             }
-
         })
         //=====================================================
         $("#loadChapterBtn").linkbutton({
-            iconCls: 'icon-undo',
+            iconCls: "icon-undo",
             text: "下载音频",
             onClick: function () {
-                var row = $("#albumTable").edatagrid("getSelected");
+                var row = $("#albumTable").treegrid("getSelected");
                 if (row != null) {
-                    //编辑指定行
-                    var index = $("#table").edatagrid("getRowIndex", row);
-                    $("#table").edatagrid("editRow", index);
+
+                    if (row.duration != null) {
+                        location.href = "${pageContext.request.contextPath}/chapter/downLoadChapter?url=" + row.url + "&title=" + row.title
+
+                    } else {
+                        $.messager.alert("提示框", "请先选择要下载的章节")
+                    }
                 } else {
-                    alert("请先选中行")
+                    $.messager.alert("提示框", "请先选择要下载的音频")
                 }
             }
         })
@@ -104,6 +104,23 @@
                   }*/
             }
         })
+        //================================================
+        $("#exportDataBtn").linkbutton({
+            text: "导出",
+            iconCls: "icon-remove",
+            onClick: function () {
+                location.href = "${pageContext.request.contextPath}/poi/exportData"
+            }
+        })
+
+
+        $("#importDataBtn").linkbutton({
+            text: "导入",
+            iconCls: "icon-remove",
+            onClick: function () {
+                location.href = "${pageContext.request.contextPath}"
+            }
+        })
         //-=-=-=-=-=-=-=-=-=-=-=-----------------------=====================================
         $("#albumTable").treegrid({
             url: "${pageContext.request.contextPath}/album/showAllAlbums",
@@ -134,9 +151,11 @@
 
     function Opertion(value, row, index) {
         if (row.children == null) {
+
             return "<audio controls=\"smallconsole\" loop=\"loop\"\n" +
-                "       src=\"${pageContext.request.contextPath}/view/sad.mp3\">\n" +
-                "</audio>";
+                "     src=\"${pageContext.request.contextPath}/music/" + row.url + "\">\n" +
+                "</audio>\n";
+
         }
 
     }
@@ -155,7 +174,7 @@
         <th data-options="field:'duration',width:60,height:20">章节时长</th>
     </tr>
     </thead>
-    >
+
 </table>
 
 <div id="chapterTool">
@@ -163,6 +182,9 @@
     <a id="addAlbumBtn"></a>
     <a id="addChapterBtn"></a>
     <a id="loadChapterBtn"></a>
+    <a id="importDataBtn"></a>
+    <a id="exportDataBtn"></a>
+
 
 </div>
 <div id="addAlbumDialog"></div><%--添加专辑--%>

@@ -27,7 +27,7 @@
                         return $("#addAlbumForm").form("validate");
                     },
                     success: function () {
-                        alert("fffffffffff");
+                        //alert("fffffffffff");
                         $("#addAlbumDialog").dialog("close");
                         $("#albumTable").datagrid("load");
                         $.messager.show({
@@ -128,7 +128,7 @@
       action="${pageContext.request.contextPath}/album/insertAlbum">
     <input id="addName" name="title"><br>
 
-    <input id="addCount" name="count"><br>
+    <input id="addCount" name="score"><br>
 
     <%--<input id="addCoverImg" name="coverImg" ><br>--%>
     <input id="addAuthor" name="author"><br>

@@ -4,6 +4,8 @@
     <resultMap id="chapter" type="Album">
         <id column="aid" property="id"/>
         <result column="atitle" property="title"></result>
+        <result column="acover_img" property="coverImg"></result>
+        <result column="apub_date" property="pubDate"></result>
         <collection property="children" ofType="Chapter">
             <id column="cid" property="id"/>
             <result column="ctitle" property="title"/>
@@ -14,7 +16,8 @@
         </collection>
     </resultMap>
     <select id="queryAllAlbumChapter" resultMap="chapter">
-        select a.id aid,a.title atitle,c.id cid,c.title ctitle,c.size,c.duration,c.url,c.upload_date
+        select a.id aid,a.cover_img acover_img,a.pub_date apub_date,a.title atitle,c.id cid,c.title
+        ctitle,c.size,c.duration,c.url,c.upload_date
         from album a left join chapter c on a.id=c.parent_id
     </select>
 

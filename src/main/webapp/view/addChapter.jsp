@@ -16,7 +16,10 @@
                 },
                 message: "输入的必须是数字"
             },
-        });
+            /*   });
+               $("#upload").filebox({
+                   reqiured:true
+               })*/
         //提交================
         $("#submitBtn").linkbutton({
             plain: true,
@@ -31,7 +34,7 @@
                         $("#addChapterDialog").dialog("close");
                         $("#albumTable").treegrid("load");
                         $.messager.show({
-                            title: "添加用户",
+                            title: "添加章节",
                             msg: "添加成功"
                         });
                     }
@@ -42,7 +45,7 @@
         $("#resetBtn").linkbutton({
             plain: true,
             onClick: function () {
-                $("#addAlbumForm").form("reset");
+                $("#addChapterForm").form("reset");
             }
         });
         //input框===================
@@ -68,17 +71,17 @@
             validType: "length[1,10]"
 
         });
-        $("#addUrl").textbox({
-            required: true,
-            height: 30,
-            width: 200,
-            type: "text",
-            buttonText: "路径",
-            buttonAlign: "left",
-            validType: "length[1,30]"
+        /*   $("#addUrl").textbox({
+               required: true,
+               height: 30,
+               width: 200,
+               type: "text",
+               buttonText: "路径",
+               buttonAlign: "left",
+               validType: "length[1,30]"
 
 
-        });
+           });*/
         $("#addUploadDate").datebox({
             required: true,
             height: 30,
@@ -107,18 +110,21 @@
 
 
 <h1>
-    添加专辑:
+    添加章节:
 </h1>
-<form id="addChapterForm" method="post">
+<form id="addChapterForm" method="post" enctype="multipart/form-data">
     <input id="addTitle" name="title"><br>
 
-    <input id="addSize" name="size"><br>
+    <%--<input id="addSize" name="size"><br>--%>
 
-    <input id="addUrl" name="url"><br>
+    <%--    <input id="addUrl" name="url"><br>--%>
 
-    <input id="addDuration" name="duration"><br>
+    <%--<input id="addDuration" name="duration"><br>--%>
 
     <input id="addUploadDate" name="uploadDate"><br>
+
+    <input id="upload" type="file" name="file"><br>
+    <%--<input id="upload" name="file"><br>--%>
     <p>
         <a id="submitBtn">提交</a>
         <a id="resetBtn">重置</a>
