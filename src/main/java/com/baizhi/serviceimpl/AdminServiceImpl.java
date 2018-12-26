@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpSession;
 
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
@@ -22,13 +22,15 @@ public class AdminServiceImpl implements AdminService {
         String code = (String) session.getAttribute("vCode");
         Admin admin1 = adminMapper.selectOne(admin);
         if (code.equalsIgnoreCase(vCode)) {
-            System.out.println("ffffffffff");
+            // System.out.println("ffffffffff");
             if (admin1 != null) {
-                System.out.println("fffffffffffffffffddddddd");
+                // System.out.println("fffffffffffffffffddddddd");
                 return true;
             }
         }
 
         return false;
     }
+
+
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.mapper.UserMapper">
+    <!--查询每个省份的男女各所少人-->
+    <select id="getAllByProvince" resultType="Map">
+        <!--SELECT count(*) value,province name, SUM(sex = '男') AS 男, SUM(sex = '女') AS 女 FROM user
+        GROUP BY province-->
+        select count(*) value,province name from user group by province
+    </select>
+    <!--查询最近三周的人数根据注册时间-->
+    <select id="getAllUserByDate" resultType="Integer">
+        select count(*) from user where datediff(now(),regist_date) &lt; #{day}
+    </select>
+</mapper>

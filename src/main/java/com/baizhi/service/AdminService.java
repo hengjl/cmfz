@@ -6,4 +6,5 @@ import javax.servlet.http.HttpSession;
 
 public interface AdminService {
     public Boolean queryOne(Admin admin, String vCode, HttpSession session);
+
 }
