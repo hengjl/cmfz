@@ -17,6 +17,8 @@ public interface UserMapper extends Mapper<User> {
 
     public List<China> getAllByProvince();
 
+    public List<User> getAllUserExceptMyself(Integer id);
+
 
     /**
      * 使用动态sql得出最近三周的 人数统计   根据注册日期

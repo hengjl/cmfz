@@ -11,4 +11,8 @@
     <select id="getAllUserByDate" resultType="Integer">
         select count(*) from user where datediff(now(),regist_date) &lt; #{day}
     </select>
+    <!--查询除了本用户的其他所有用户-->
+    <select id="getAllUserExceptMyself" resultType="User">
+        select * from user where id !=#{id}
+    </select>
 </mapper>

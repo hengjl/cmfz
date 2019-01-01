@@ -19,13 +19,15 @@ public interface UserService {
      */
     public void insert(User user);
 
-    public void update(User user);
+    public Object update(User user);
 
-    public List<User> getAllUser();
+    public List<User> getAllUser(Integer id);
 
     public void delete(Integer id);
 
-    public User getOneUser(Integer id);
+    public User getOneUser(Object object);
+
+
 
     /**
      * 通过自定义查询语句得出每个省份的男女分别有多少人

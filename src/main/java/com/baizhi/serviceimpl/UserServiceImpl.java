@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public List<User> getAllUser() {
-        List<User> userList = userMapper.selectAll();
+    public List<User> getAllUser(Integer id) {
+        List<User> userList = userMapper.getAllUserExceptMyself(id);
         return userList;
     }
 
@@ -30,8 +30,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(User user) {
-        userMapper.updateByPrimaryKey(user);
+    public Object update(User user) {
+
+        int i = userMapper.updateByPrimaryKey(user);
+        if (i != 0) {
+            return user;
+        } else {
+            return "fail";
+        }
+
 
     }
 
@@ -42,8 +49,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public User getOneUser(Integer id) {
-        User user = (User) userMapper.selectByPrimaryKey(id);
+    public User getOneUser(Object object) {
+        User user = (User) userMapper.selectByPrimaryKey(object);
         return user;
     }
 
